@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filtro de Actividades</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #FFC107;
+            margin-bottom: 30px;
+        }
+        .progress-container {
+            margin-bottom: 20px;
+        }
+        .progress-bar {
+            height: 20px;
+            background-color: #FFC107;
+            border-radius: 4px;
+            width: 0%;
+            transition: width 0.3s;
+        }
+        .progress {
+            background-color: #ddd;
+            border-radius: 4px;
+            overflow: hidden;
+            width: 100%;
+        }
+        .progress-label {
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: center;
+            font-size: 14px;
+        }
+        th {
+            background-color: #FFC107;
+            color: #fff;
+            text-transform: uppercase;
+        }
+        tr:nth-child(even) {
+            background-color: #fef7e0;
+        }
+        tr:hover {
+            background-color: #fff3cd;
+        }
+        .table-container {
+            overflow-x: auto;
+        }
+        .home-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #FFC107;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            padding: 10px 15px;
+            font-size: 1.5em;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .home-button:hover {
+            background-color: #E0A800;
+            transform: scale(1.1);
+        }
+        .home-button i {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Título -->
+    <h1>Inscripciones Admisión 2025 - I</h1>
+
+    <!-- Botón de Home -->
+    <a href="index.html" class="home-button">
+        <i class="fas fa-home"></i>
+    </a>
+
+    <!-- Barra de progreso -->
+    <div class="progress-container">
+        <div class="progress-label">Progreso de la Meta: <span id="progress-text">0%</span></div>
+        <div class="progress" id="progress-bar">
+            <div class="progress-bar" id="progress-fill"></div>
+        </div>
+    </div>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>CARRERAS</th>
+                    <th>MAÑANA</th>
+                    <th>NOCHE</th>
+                    <th>SÁBADO</th>
+                    <th>TOTAL</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Inicial</td>
+                    <td>32</td>  <!-- INICIAL MAÑANA  -->
+                    <td>628</td>   <!-- INICIAL NOCHE -->
+                    <td>20</td>   <!-- INICIAL SABADO -->
+                    <td>120</td>    <!-- TOTAL INICIAL -->
+                </tr>
+                <tr>
+                    <td>Primaria</td>
+                    <td>6</td>  <!-- PRIMARIA MAÑANA  -->
+                    <td>24</td>   <!-- PRIMARIA NOCHE  -->
+                    <td>12</td>   <!-- PRIMARIA SABADO  -->
+                    <td>42</td>    <!-- TOTAL PRIMARIA  -->
+                </tr> 
+                <tr>
+                    <td>CCSS</td>
+                    <td>3</td>   <!-- CCSS MAÑANA  -->
+                    <td>30</td>  <!-- CCSS NOCHE  -->
+                    <td>5</td>   <!-- CCSS SABADO  -->
+                    <td>38</td>   <!-- TOTAL CCSS  -->
+                </tr>
+                <tr>
+                    <td><strong>Total</strong></td>
+                    <td><strong>41</strong></td>    <!-- TOTAL MAÑANA  -->
+                    <td><strong>122</strong></td>    <!-- TOTAL NOCHE  -->
+                    <td><strong>37</strong></td>     <!-- TOTAL SABADO -->
+                    <td><strong>200</strong></td>    <!-- TOTAL INSCRITOS  -->
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Script para cargar íconos de Font Awesome -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+
+    <!-- Script para inicializar la barra de progreso desde el backend -->
+    <script>
+        // Simulación de porcentaje recibido desde el backend -- meta propuesta 210, el porcentaje es sacado en base a 210 como el 100%
+        const porcentajeMeta = 95.23; // Cambia este valor desde el backend
+
+        // Actualización de la barra de progreso
+        const progressBar = document.getElementById('progress-fill');
+        const progressText = document.getElementById('progress-text');
+
+        progressBar.style.width = porcentajeMeta + '%';
+        progressText.textContent = porcentajeMeta + '%';
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+        .login-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #1e293b;
+        }
+        .login-box {
+            background: white;
+            padding: 20px 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .login-box input {
+            margin: 10px 0;
+            padding: 10px;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .login-box button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .dashboard {
+            padding: 20px;
+            display: none;
+        }
+        .table-container {
+            margin-top: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        th, td {
+            border: 1px solid #ddd;
+            text-align: center;
+            padding: 10px;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .totals {
+            margin-top: 20px;
+            text-align: right;
+            font-size: 18px;
+        }
+
+        .home-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: black;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            padding: 10px 15px;
+            font-size: 1.5em;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .home-button:hover {
+            background-color: black;
+            transform: scale(1.1);
+        }
+
+        .home-button i {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Botón de Home -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <a href="index.html" class="home-button px-6 py-3 bg-black-600 text-white rounded-full font-bold shadow-lg hover:bg-black-500 transition inline-flex items-center justify-center">
+        <i class="fas fa-home text-2xl"></i>
+    </a>
+
+    <div class="login-container" id="login-container">
+        <div class="login-box">
+            <h2>Acceso Restringido</h2>
+            <input type="text" id="username" placeholder="Ingresar usuario">
+            <input type="password" id="password" placeholder="Ingresar contraseña">
+            <button onclick="authenticate()">Ingresar</button>
+        </div>
+    </div>
+
+    <div class="dashboard" id="dashboard">
+         <h2>Reportes Mensuales</h2>
+        <label for="monthFilter">Seleccionar mes:</label>
+        <select id="monthFilter" onchange="filterData()">
+            <option value="all">Todo</option>
+            <option value="Enero">Enero</option>
+            <option value="Febrero">Febrero</option>
+            <option value="Marzo">Marzo</option>
+            <option value="Abril">Abril</option>
+        </select>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Mes</th>
+                        <th>Ventas</th>
+                        <th>Compras</th>
+                        <th>Profit</th>
+                    </tr>
+                </thead>
+                <tbody id="data-table"></tbody>
+            </table>
+        </div>
+
+        <div class="totals" id="totals"></div>
+    </div>
+
+    <script>
+        const data = [
+            { month: "Enero", purchases: 500, sales: 1000 },
+            { month: "Febrero", purchases: 400, sales: 600 },
+            { month: "Marzo", purchases: 300, sales: 500 },
+            { month: "Abril", purchases: 200, sales: 400 },
+        ];
+
+        const loginContainer = document.getElementById('login-container');
+        const dashboard = document.getElementById('dashboard');
+
+        function authenticate() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            if (username === '10475256' && password === '10475256') {
+                loginContainer.style.display = 'none';
+                dashboard.style.display = 'block';
+                renderTable();
+            } else {
+                alert('Invalid credentials!');
+            }
+        }
+
+        function filterData() {
+            const monthFilter = document.getElementById('monthFilter').value;
+            const filteredData = monthFilter === 'all' ? data : data.filter(item => item.month === monthFilter);
+            renderTable(filteredData);
+        }
+
+        function renderTable(filteredData = data) {
+            const tableBody = document.getElementById('data-table');
+            const totalsDiv = document.getElementById('totals');
+            tableBody.innerHTML = '';
+            let totalPurchases = 0;
+            let totalSales = 0;
+
+            filteredData.forEach(item => {
+                const profit = item.sales - item.purchases;
+                totalPurchases += item.purchases;
+                totalSales += item.sales;
+                tableBody.innerHTML += `
+                    <tr>
+                        <td>${item.month}</td>
+                        <td>${item.sales}</td>
+                        <td>${item.purchases}</td>
+                        <td>${profit}</td>
+                    </tr>
+                `;
+            });
+
+            totalsDiv.textContent = `Total compras: S/.${totalPurchases}, Total Ventas: S/.${totalSales}, Total Ganancia: S/.${totalSales - totalPurchases}`;
+        }
+    </script>
+</body>
+</html>
+

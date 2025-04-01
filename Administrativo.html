@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filtro de Actividades</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #364a5a;
+            margin-bottom: 30px;
+        }
+        .filter-section {
+            background-color: #ffffff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        .filter-section label {
+            font-weight: bold;
+            color: #333;
+        }
+        .filter-section input, .filter-section select {
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            outline: none;
+            width: 150px;
+            font-size: 14px;
+        }
+        .filter-section button {
+            background-color: #364a5a;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+        .filter-section button:hover {
+            background-color: #364a5a;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+            font-size: 14px;
+        }
+        th {
+            background-color: #364a5a;
+            color: #fff;
+            text-transform: uppercase;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        .table-container {
+            overflow-x: auto;
+        }
+        .home-button {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #364a5a;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    padding: 10px 15px;
+    font-size: 1.5em;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.home-button:hover {
+    background-color: #364a5a;
+    transform: scale(1.1);
+}
+
+.home-button i {
+    margin: 0;
+}
+    </style>
+</head>
+
+<body>
+    <!-- Título -->
+    <h1>Monitoreo de Actividades Administrativas 2025</h1>
+    <div class="container">
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+<!-- Botón de Home -->
+<a href="index.html" class="home-button px-6 py-3 bg-blue-600 text-white rounded-full font-bold shadow-lg hover:bg-blue-500 transition inline-flex items-center justify-center">
+    <i class="fas fa-home text-2xl"></i>
+</a>
+
+
+    <div class="filter-section">
+        <label for="codigo">Código:</label>
+        <input type="text" id="codigo" placeholder="Ejemplo: I001">
+        
+        <label for="mes">Mes:</label>
+        <select id="mes">
+            <option value="">Seleccionar mes</option>
+            <option value="Enero">Enero</option>
+            <option value="Febrero">Febrero</option>
+            <option value="Marzo">Marzo</option>
+            <option value="Abril">Abril</option>
+            <option value="Mayo">Mayo</option>
+            <option value="Junio">Junio</option>
+            <option value="Julio">Julio</option>
+            <option value="Agosto">Agosto</option>
+            <option value="Septiembre">Septiembre</option>
+            <option value="Octubre">Octubre</option>
+            <option value="Noviembre">Noviembre</option>
+            <option value="Diciembre">Diciembre</option>
+        </select>
+        <label for="estado">Estado:</label>
+        <select id="estado">
+            <option value="">Seleccionar estado</option>
+            <option value="Por Hacer">Por Hacer</option>
+            <option value="Proceso">Proceso</option>
+            <option value="Revisión">Revisión</option>
+            <option value="Listo">Listo</option>
+        </select>
+
+
+        <button onclick="filtrarDatos()">Filtrar</button>
+
+
+
+    </div>
+ 
+    <div class="table-container">
+        <table id="tablaDatos">
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Actividad</th>
+                    <th>Mes</th>
+                    <th>Estado</th>
+                    <th>Observación</th>
+                </tr>
+            </thead>
+            <tbody>
+              <!--PRIMER SEMESTRES-->
+<!--ENERO -->
+<tr><td>I001</td><td>Actualizar y Renovacion de información al Q10 N°1</td><td>Enero</td><td>Listo</td><td>Validar data de los excel en procesos - analisis de información</td></tr>
+<tr><td>I002</td><td>Carnet de Medio Pasaje N° 1 (1° convocatoria. 2 - 9 ciclo)</td><td>Enero</td><td>Listo</td><td>Ya se envio el formulario, vence el 7 de febrero</td></tr>
+<tr><td>I003</td><td>Carga de notas al Q10</td><td>Enero</td><td>Listo</td><td>Validar data de las actas</td></tr>
+<tr><td>I004</td><td>Carga de notas al SIA</td><td>Enero</td><td>Listo</td><td>Validar data de las actas</td></tr>
+<tr><td>I005</td><td>Aperturar SIA verano(subsanacion)</td><td>Enero</td><td>Proceso</td><td>Se escribio al señor victor para omitir este periodo y hacerlo en periodo regular</td></tr>
+<tr><td>I006</td><td>configuración de examenes subsanacion Q10 N°1</td><td>Enero</td><td>Listo</td><td>en base a los examenes de subsanación</td></tr>
+<tr><td>I007</td><td>Envío de comunicado y flyer(alza de precio - cronograma de pagos)</td><td>Enero</td><td>Listo</td><td>en base a los examenes de subsanación</td></tr>
+<tr><td>I008</td><td>Envio de flyer de adelanto de pagos(dscto ciclo completo)</td><td>Enero</td><td>Listo</td><td>en base a los examenes de subsanación</td></tr>
+<tr><td>I009</td><td>Comunicado de inhabilitacion de matricula por deudas</td><td>Enero</td><td>Listo</td><td>en base a los examenes de subsanación</td></tr>
+<tr><td>I010</td><td>Capacitación a los administrativos Q10</td><td>Enero</td><td>Listo</td><td>en base a los examenes de subsanación</td></tr>
+<tr><td>I011</td><td>Hacer una revisión de las aulas a los equipos electronicos</td><td>Enero</td><td>Listo</td><td>area de mantenimiento con equipo tecnico dejo listo</td></tr>
+<tr><td>I012</td><td>Hacer una actualización a los xls para Q10</td><td>Enero</td><td>Listo</td><td>area analisis de información (drive de proceso)</td></tr>
+<tr><td>I013</td><td>Creación de Créditos N° 1</td><td>Enero</td><td>Listo</td><td>Diseño de ya puede realizar su pago (recordatorio) - wsp</td></tr>
+<tr><td>I014</td><td>Contacto con los deudores</td><td>Enero</td><td>Listo</td><td>Area de bienestar estudiantil</td></tr>
+<tr><td>I015</td><td>ACTUALIZAR GITHUB GOT EYES & QR DE VALIDACIÓN</td><td>Enero</td><td>Listo</td><td>Revisión de los modulos generales</td></tr>
+<tr><td>I016</td><td>AUDITORIA INTERNA AL TELECREDITO BCP</td><td>Enero</td><td>Listo</td><td>Revisión de los modulos generales</td></tr>
+
+
+<!--FEBRERO -->
+<tr><td>I017</td><td>Visar subsanación SIA (nominas y actas)</td><td>Enero</td><td>Proceso</td><td> Area de grados y titulos</td></tr>                
+<tr><td>I018</td><td>Subir la solicitud de carnets medio pasaje a PLUSSINGER </td><td>Febrero</td><td>Listo</td><td>Diseño de ya puede realizar su pago (recordatorio) - wsp</td></tr>
+<tr><td>I019</td><td>Creación de Créditos N° 1 faltantes </td><td>Febrero</td><td>Listo</td><td>Diseño de ya puede realizar su pago (recordatorio) - wsp</td></tr>
+<tr><td>I020</td><td>Análisis y migración de data y cursos N° 1</td><td>Febrero</td><td>Listo</td><td>Diseño de próximo inicio de clases</td></tr>
+<tr><td>I021</td><td>Crear las cuentas nuevas de docentes para Q10 & Classroom N° 1</td><td>Febrero</td><td>Listo</td><td>Diseño de próximo inicio de clases</td></tr>
+<tr><td>I022</td><td>Carga académica N° 1 (2do ciclo - 10mo ciclo)</td><td>Febrero</td><td>Proceso</td><td>Validar el drive de procesos (backup de Meet)</td></tr>
+<tr><td>I023</td><td>Portafolios cambiar los datos de periodo</td><td>Febrero</td><td>Listo</td><td>Encargar a un administrativo al cambio de la misma</td></tr>
+<tr><td>I024</td><td>Realizar solicitudes de compra de implementos para las aulas</td><td>Febrero</td><td>Listo</td><td>Se envio la solicitud de cotizacion de implementos para aulas</td></tr>
+<tr><td>I025</td><td>Organizar los documentos para el admisión</td><td>Febrero</td><td>Listo</td><td>en el drive de procesos</td></tr>
+<tr><td>I026</td><td>Realizar el cambio en los montos para la matrícula extemporanea</td><td>Febrero</td><td>Listo</td><td>realizarlo en la noche madrugada</td></tr>
+<tr><td>I027</td><td>Organizar los documentos para el admisión</td><td>Febrero</td><td>Listo</td><td>Se envio la solicitud de cotizacion de implementos para aulas</td></tr>
+<tr><td>I028</td><td>ACTUALIZAR GITHUB GOT EYES & QR DE VALIDACIÓN</td><td>Febrero</td><td>Listo</td><td>Revisión de los modulos generales</td></tr>
+<tr><td>I029</td><td>AUDITORIA INTERNA A TECNOVO PERU</td><td>Febrero</td><td>Listo</td><td>Revisión de los modulos generales</td></tr>
+
+                
+<!--MARZO -->
+<tr><td>I004</td><td>Subir los CV de los profesores al drive de proceso</td><td>Marzo</td><td>Por hacer</td><td>Encargar a asistente de RRHH</td></tr>
+<tr><td>I004</td><td>Imprimir los portafolios en base a reportes de Q10</td><td>Marzo</td><td>Por hacer</td><td>Encargar a un administrativo a la filtración de datos</td></tr>
+<tr><td>I004</td><td>Impresion de examenes de admision</td><td>Marzo</td><td>Por Hacer</td><td>Validar los postulantes dentro de </td></tr>
+<tr><td>I004</td><td>Armar funciones para el procedo de admisión</td><td>Marzo</td><td>Por Hacer</td><td>Validarlo con la coordinadora academica </td></tr>
+<tr><td>I004</td><td>Carga académica N° 2 (1er ciclo)</td><td>Marzo</td><td>Por Hacer</td><td>el encargado de Q10 valida toda la migración de información</td></tr>
+<tr><td>I006</td><td>Impresión y Entrega de Portafolio N° 1</td><td>Marzo</td><td>Por Hacer</td><td>Diseño sobre recojo de portafolios - wsp</td></tr>
+<tr><td>I008</td><td>Entrega de Calendarización N° 1</td><td>Marzo</td><td>Por Hacer</td><td>Diseño sobre horario de clases y calendarización - wsp</td></tr>
+<tr><td>I010</td><td>Examén de Admisión N° 1</td><td>Marzo</td><td>Por Hacer</td><td>Diseño sobre examen de admisión</td></tr>
+<tr><td>I005</td><td>Análisis y migración de data y cursos N° 1</td><td>Marzo</td><td>Listo</td><td>Diseño de próximo inicio de clases</td></tr>
+<tr><td>I015</td><td>ACTUALIZAR GITHUB GOT EYES & QR DE VALIDACIÓN</td><td>Marzo</td><td>Listo</td><td>Revisión de los modulos generales</td></tr>
+<tr><td>I032</td><td>AUDITORIA INTERNA A TECNOVO PERU</td><td>Marzo</td><td>Listo</td><td>Revisión de los modulos generales</td></tr>
+<tr><td>I032</td><td>Entrega de portafolios N° 2</td><td>Marzo</td><td>En proceso</td><td>sellarlos y lanzar comunicado de dias de entrega</td></tr>
+                
+<!-- ABRIL -->
+<tr><td>I026</td><td>Carnet de Medio Pasaje N° 1 (2° convocatoria. 1 ciclo)</td><td>Abril</td><td>Por hacer </td><td>para cachimbos, despues del admisión</td></tr>
+<tr><td>I015</td><td>ACTUALIZAR GITHUB GOT EYES & QR DE VALIDACIÓN</td><td>Abril</td><td>Listo</td><td>Revisión de los modulos generales</td></tr>
+<tr><td>I032</td><td>AUDITORIA INTERNA A TECNOVO PERU</td><td>Abril</td><td>Listo</td><td>Revisión de los modulos generales</td></tr>
+                
+<!--JUNIO -->
+<tr><td>I013</td><td>Creación de Créditos N° 2</td><td>Junio</td><td>Por Hacer</td><td>Diseño de ya puede realizar su pago (recordatorio) - wsp</td></tr>
+<tr><td>I015</td><td>Análisis y migración de data y cursos N° 2</td><td>Junio</td><td>Por Hacer</td><td>Diseño de próximo inicio de clases</td></tr>
+<tr><td>I017</td><td>Actualizar y Renovacion de información al Q10 N°2</td><td>Junio</td><td>Por Hacer</td><td>Validar data de los excel en procesos</td></tr>
+<tr><td>I015</td><td>ACTUALIZAR GITHUB GOT EYES & QR DE VALIDACIÓN</td><td>Junio</td><td>Listo</td><td>Revisión de los modulos generales</td></tr>
+<tr><td>I032</td><td>AUDITORIA INTERNA A TECNOVO PERU</td><td>Junio</td><td>Listo</td><td>Revisión de los modulos generales</td></tr>                
+
+<!--JULIO -->
+<tr><td>I001</td><td>Finalizar las clases N° 1</td><td>Julio</td><td>Por Hacer</td><td>Diseño de culminación de clases - wsp</td></tr>
+<tr><td>I002</td><td>Boletas de notas y actas auxiliares N° 1</td><td>Julio</td><td>Por Hacer</td><td>Diseño remoto a boleta de notas - wsp</td></tr>
+<tr><td>I014</td><td>Carga académica N° 2</td><td>Julio</td><td>Por Hacer</td><td>Debe estar aprobado por Victor</td></tr>
+<tr><td>I016</td><td>Entrega de Portafolio N° 2</td><td>Julio</td><td>Por Hacer</td><td>Diseño sobre recojo de portafolios - wsp</td></tr>
+<tr><td>I028</td><td>configuración de examenes subsanacion Q10 N°2</td><td>Julio</td><td>Por Hacer</td><td>en base a los examenes de subsanación</td></tr>
+<tr><td>I015</td><td>ACTUALIZAR GITHUB GOT EYES & QR DE VALIDACIÓN</td><td>Febrero</td><td>Listo</td><td>Revisión de los modulos generales</td></tr>
+<tr><td>I032</td><td>AUDITORIA INTERNA A TECNOVO PERU</td><td>Febrero</td><td>Listo</td><td>Revisión de los modulos generales</td></tr>
+
+<!--AGOSTO -->
+<tr><td>I018</td><td>Entrega de Calendarización N° 2</td><td>Agosto</td><td>Por Hacer</td><td>Diseño sobre horario de clases y calendarización - wsp</td></tr>
+<tr><td>I020</td><td>Examén de Admisión N° 2</td><td>Agosto</td><td>Por Hacer</td><td>Diseño sobre examen de admisión</td></tr>
+<tr><td>I024</td><td>Carga de notas al Q10</td><td>Agosto</td><td>Por Hacer</td><td>Validar data de las actas</td></tr>
+<tr><td>I025</td><td>Carga de notas al SIA</td><td>Agosto</td><td>Por Hacer</td><td>Validar data de las actas</td></tr>
+
+<!--DICIEMBRE -->
+<tr><td>I011</td><td>Finalizar las clases N° 2</td><td>Diciembre</td><td>Por Hacer</td><td>Diseño de culminación de clases - wsp</td></tr>
+<tr><td>I012</td><td>Boletas de notas y actas auxiliares N° 2</td><td>Diciembre</td><td>Por Hacer</td><td>Diseño remoto a boleta de notas - wsp</td></tr>
+
+                <!-- Agrega más filas de ejemplo según sea necesario -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        function filtrarDatos() {
+            const codigo = document.getElementById('codigo').value.trim().toUpperCase();
+            const mes = document.getElementById('mes').value;
+            const estado = document.getElementById('estado').value;
+            const tabla = document.getElementById('tablaDatos').getElementsByTagName('tbody')[0];
+            const filas = tabla.getElementsByTagName('tr');
+
+            for (let i = 0; i < filas.length; i++) {
+                const fila = filas[i];
+                const celdaCodigo = fila.cells[0].textContent;
+                const celdaMes = fila.cells[2].textContent;
+                const celdaEstado = fila.cells[3].textContent;
+
+                if ((codigo === '' || celdaCodigo.startsWith(codigo)) &&
+                    (mes === '' || celdaMes === mes) &&
+                    (estado === '' || celdaEstado === estado)) {
+                    fila.style.display = '';
+                } else {
+                    fila.style.display = 'none';
+                }
+            }
+        }
+    
+    </script>
+</body>
+</html>

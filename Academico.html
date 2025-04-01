@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filtro de Actividades</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #579b5a;
+            margin-bottom: 30px;
+        }
+        .filter-section {
+            background-color: #ffffff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        .filter-section label {
+            font-weight: bold;
+            color: #333;
+        }
+        .filter-section input, .filter-section select {
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            outline: none;
+            width: 150px;
+            font-size: 14px;
+        }
+        .filter-section button {
+            background-color: #579b5a;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+        .filter-section button:hover {
+            background-color: #579b5a;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+            font-size: 14px;
+        }
+        th {
+            background-color: #579b5a;
+            color: #fff;
+            text-transform: uppercase;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        .table-container {
+            overflow-x: auto;
+        }
+        .home-button {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #579b5a;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    padding: 10px 15px;
+    font-size: 1.5em;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.home-button:hover {
+    background-color: #579b5a;
+    transform: scale(1.1);
+}
+
+.home-button i {
+    margin: 0;
+}
+    </style>
+</head>
+
+<body>
+    <!-- Título -->
+    <h1>Monitoreo de Actividades Académicas 2025 </h1>
+    <div class="container">
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+<!-- Botón de Home -->
+<a href="index.html" class="home-button px-6 py-3 bg-blue-600 text-white rounded-full font-bold shadow-lg hover:bg-blue-500 transition inline-flex items-center justify-center">
+    <i class="fas fa-home text-2xl"></i>
+</a>
+
+
+    <div class="filter-section">
+        <label for="codigo">Código:</label>
+        <input type="text" id="codigo" placeholder="Ejemplo: I001">
+        
+        <label for="mes">Mes:</label>
+        <select id="mes">
+            <option value="">Seleccionar mes</option>
+            <option value="Enero">Enero</option>
+            <option value="Febrero">Febrero</option>
+            <option value="Marzo">Marzo</option>
+            <option value="Abril">Abril</option>
+            <option value="Mayo">Mayo</option>
+            <option value="Junio">Junio</option>
+            <option value="Julio">Julio</option>
+            <option value="Agosto">Agosto</option>
+            <option value="Septiembre">Septiembre</option>
+            <option value="Octubre">Octubre</option>
+            <option value="Noviembre">Noviembre</option>
+            <option value="Diciembre">Diciembre</option>
+        </select>
+        <label for="estado">Estado:</label>
+        <select id="estado">
+            <option value="">Seleccionar estado</option>
+            <option value="Por Hacer">Por Hacer</option>
+            <option value="Proceso">Proceso</option>
+            <option value="Revisión">Revisión</option>
+            <option value="Listo">Listo</option>
+        </select>
+
+
+        <button onclick="filtrarDatos()">Filtrar</button>
+
+
+
+    </div>
+ 
+    <div class="table-container">
+        <table id="tablaDatos">
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Actividad</th>
+                    <th>Mes</th>
+                    <th>Estado</th>
+                    <th>Observación</th>
+                </tr>
+            </thead>
+            <tbody>
+                 <!-- ENERO -->
+                <tr><td>A001</td><td>Cenfocap N° 1 (Capacitacion Contratación Auxiliar docente)</td><td>Enero</td><td>Listo</td><td>Se entregaron certificados por especialidad</td></tr>
+                <tr><td>A002</td><td>Taller de danza</td><td>Enero</td><td>Proceso</td><td>Las inscripciones ya iniciaron</td></tr>
+                <tr><td>A003</td><td>Taller de Tesis N° 1</td><td>Enero</td><td>Proceso</td><td>Se ha postergado la fecha de inicio, ausentan alumnos</td></tr>
+                <tr><td>A004</td><td>Taller de Fortalecimiento</td><td>Enero</td><td>Proceso</td><td>Ya inicio las sesiones el 04 de enero</td></tr>
+                <tr><td>A005</td><td>Convocatoria docentes</td><td>Enero</td><td>Proceso</td><td>Se realizo la convocatoria</td></tr>
+                <tr><td>A006</td><td>Entrevista docentes</td><td>Enero</td><td>Por Hacer</td><td>Pendiente a realizar</td></tr>
+                <tr><td>A007</td><td>Entrega de carga horaria N° 1</td><td>Enero</td><td>Revisión</td><td>Se deben levantar las observaciones</td></tr>
+                <tr><td>A008</td><td>Docente - Silabus mejoras</td><td>Enero</td><td>Por Hacer</td><td>Pendiente a realizar</td></tr>
+                <tr><td>A009</td><td>Subsanación examenes N° 1</td><td>Enero</td><td>Proceso</td><td>Ausenta la aprobación de las fechas propuestas</td></tr>
+               
+                 <!-- FEBRERO -->
+                <tr><td>A011</td><td>Reunión docentes-Q10 N° 1</td><td>Febrero</td><td>Por hacer</td><td>Pendiente a realizar</td></tr>
+                <tr><td>A012</td><td>Cenfocap N° 2</td><td>Febrero</td><td>Por Hacer</td><td>Pendiente a realizar.</td></tr>
+                <tr><td>A013</td><td>Capacitación de auxiliares</td><td>Febrero</td><td>Por Hacer</td><td>Pendiente a realizar</td></tr>
+                <tr><td>A014</td><td>Reunión docente Prac.Invest N° 1</td><td>Febrero</td><td>Por Hacer</td><td>Pendiente a realizar</td></tr>
+                <tr><td>A015</td><td>Reunión docentes N° 1</td><td>Febrero</td><td>Por Hacer</td><td>Pendiente a realizar</td></tr>
+                <tr><td>A016</td><td>Examen Final Fortalecimiento</td><td>Febrero</td><td>Por Hacer</td><td>Pendiente a realizar</td></tr>
+                <tr><td>A017</td><td>Entrega boletín estudiante</td><td>Febrero</td><td>Por Hacer</td><td> Pendiente a realizar</td></tr>
+                <tr><td>A018</td><td>Docente entrega de silabus</td><td>Febrero</td><td>Por Hacer</td><td>Pendiente a realizars</td></tr>
+               
+
+                 <!-- MARZO -->
+                <tr><td>A019</td><td>Semana de Inducción (II-X Ciclo)</td><td>Marzo</td><td>Por hacer</td><td> Pendiente a realizar</td></tr>
+                <tr><td>A019</td><td>Semana de Cero (I Ciclo)</td><td>Marzo</td><td>Proceso</td><td> Pendiente a realizar</td></tr>
+                <tr><td>A021</td><td>Capacitación de auxiliares</td><td>Marzo</td><td>Por Hacer</td><td> Pendiente a realizar</td></tr>
+                <tr><td>A022</td><td>Reunión docente-Q10 N° 2</td><td>Marzo</td><td>Por Hacer</td><td> Pendiente a realizar</td></tr>
+                 <tr><td>A018</td><td>Capaitación al docente para el admisión</td><td>Marzo</td><td>Listo</td><td>Pendiente a realizars</td></tr>
+                <tr><td>A018</td><td>Capaitación al postulante para el admisión</td><td>Marzo</td><td>Listo</td><td>Pendiente a realizars</td></tr>
+                <tr><td>A018</td><td>Realizar el informe para la DRELM sobre admisión</td><td>Marzo</td><td>Proceso</td><td>Pendiente a realizars</td></tr>
+                
+                 <!-- ABRIL -->
+                <tr><td>A023</td><td>Cenfocap N° 3</td><td>Abril</td><td>Por Hacer</td><td> Pendiente a realizar</td></tr>
+                <tr><td>A024</td><td>Taller de danza</td><td>Abril</td><td>Por Hacer</td><td> Pendiente a realizar</td></tr>
+                <tr><td>A025</td><td>Visita de Estudios Lima</td><td>Abril</td><td>Por Hacer</td><td> Pendiente a realizar</td></tr>
+                <tr><td>A026</td><td>Sustentación de Tesis N° 1</td><td>Abril</td><td>Por Hacer</td><td> Pendiente a realizar</td></tr>
+                
+                 <!-- MAYO -->
+                <tr><td>A027</td><td>Cenfocap N° 4</td><td>Mayo</td><td>Por Hacer</td><td>Pendiente a realizar</td></tr>
+                <tr><td>A028</td><td>Taller de danza</td><td>Mayo</td><td>Por Hacer</td><td>Pendiente a realizar</td></tr>
+                <tr><td>A029</td><td>Actuación dia de la Madre</td><td>Mayo</td><td>Por Hacer</td><td>Pendiente a realizar</td></tr>
+                <tr><td>A030</td><td>Semana de Educación Inicial</td><td>Mayo</td><td>Por Hacer</td><td>Pendiente a realizar</td></tr>
+                <tr><td>A031</td><td>Actividad de Concientización</td><td>Mayo</td><td>Por Hacer</td><td>Pendiente a realizar</td></tr>
+
+                 <!-- JUNIO -->
+                 <tr><td>A032</td><td>Encuesta de Satisfacción docente N° 1</td><td>Junio</td><td>Por Hacer</td><td>Pendiente a realizar</td></tr>
+                 <tr><td>A033</td><td>Día del Logro</td><td>Junio</td><td>Por Hacer</td><td>Pendiente a realizar</td></tr>
+                 <tr><td>A034</td><td>Olimpiadas Amautinas</td><td>Junio</td><td>Por Hacer</td><td>Pendiente a realizar</td></tr>
+                 <tr><td>A035</td><td>Taller de Danza</td><td>Junio</td><td>Por Hacer</td><td>Pendiente a realizar</td></tr>
+                 <tr><td>A036</td><td>Informe Bienestar Estudiantil</td><td>Junio</td><td>Por Hacer</td><td>Pendiente a realizar</td></tr>
+ 
+                  <!-- JULIO -->
+                  <tr><td>A032</td><td>Actuación Dia del Maestro</td><td>Julio</td><td>Por Hacer</td><td>Pendiente a realizar</td></tr>
+                  <tr><td>A033</td><td>Ensayo Y Ceremonia Graduación N° 1</td><td>Julio</td><td>Por Hacer</td><td>Pendiente a realizar</td></tr>
+                  <tr><td>A034</td><td>Entrega de registros auxiliares</td><td>Julio</td><td>Por Hacer</td><td>Pendiente a realizar</td></tr>
+                  <tr><td>A035</td><td>Cenfocap N° 5</td><td>Julio</td><td>Por Hacer</td><td>Pendiente a realizar</td></tr>
+                  <tr><td>A036</td><td>Entrega Carga Horaria</td><td>Julio</td><td>Por Hacer</td><td>Pendiente a realizar</td></tr>
+                  <tr><td>A036</td><td>Subsanación examenes N° 2</td><td>Julio</td><td>Por Hacer</td><td>Pendiente a realizar</td></tr>
+  
+                   <!-- AGOSTO -->
+                   <tr><td>A037</td><td>Reunión docente N° 2</td><td>Agosto</td><td>Por Hacer</td><td>Pendiente a realizar</td></tr>
+                   <tr><td>A038</td><td>Reunión docente Prac.Inves N° 2</td><td>Agosto</td><td>Por Hacer</td><td>Pendiente a realizar</td></tr>
+                   <tr><td>A039</td><td>Semana Cero</td><td>Agosto</td><td>Por Hacer</td><td>Pendiente a realizar</td></tr>
+                   <tr><td>A040</td><td>Taller de Tesis N° 2</td><td>Agosto</td><td>Por Hacer</td><td>Pendiente a realizar</td></tr>
+                  
+                <!-- SETIEMBRE -->
+                <tr><td>A041</td><td>Taller de Danzas</td><td>Septiembre</td><td>Por Hacer</td><td>Pendiente a realizar</td></tr>
+                <tr><td>A042</td><td>Cenfocap N° 6</td><td>Septiembre</td><td>Por Hacer</td><td>Pendiente a realizar</td></tr>
+                <tr><td>A043</td><td>Actividad de Concientización N° 2</td><td>Septiembre</td><td>Por Hacer</td><td>Pendiente a realizar</td></tr>
+               
+                 <!-- OCTUBRE -->
+                 <tr><td>A044</td><td>Taller de Danzas</td><td>Octubre</td><td>Por Hacer</td><td>Pendiente a realizar</td></tr>
+                 <tr><td>A045</td><td>Visita de Estudios Fuera de Lima</td><td>Octubre</td><td>Por Hacer</td><td>Pendiente a realizar</td></tr>
+                 <tr><td>A046</td><td>Actuación Aniversario</td><td>Octubre</td><td>Por Hacer</td><td>Pendiente a realizar</td></tr>
+                 <tr><td>A047</td><td>Dia del Logro N° 2</td><td>Octubre</td><td>Por Hacer</td><td>Pendiente a realizar</td></tr>
+
+                  <!-- NOVIEMBRE -->
+                  <tr><td>A048</td><td>Encuesta de Satisfacción docente N° 2</td><td>Noviembre</td><td>Por Hacer</td><td>Pendiente a realizar</td></tr>
+                  <tr><td>A049</td><td>Día de la Educación Primavera</td><td>Noviembre</td><td>Por Hacer</td><td>Pendiente a realizar</td></tr>
+                  <tr><td>A050</td><td>Sustentación de Tesis N° 2</td><td>Noviembre</td><td>Por Hacer</td><td>Pendiente a realizar</td></tr>
+                  <tr><td>A051</td><td>Cenfocap N° 7</td><td>Noviembre</td><td>Por Hacer</td><td>Pendiente a realizar</td></tr>
+                  <tr><td>A052</td><td>Informe Bienestar Estudiantil</td><td>Noviembre</td><td>Por Hacer</td><td>Pendiente a realizar</td></tr>
+                  <tr><td>A053</td><td>Taller de Danza</td><td>Noviembre</td><td>Por Hacer</td><td>Pendiente a realizar</td></tr>
+
+                   <!-- DICIEMBRE -->
+                 <tr><td>A054</td><td>Entrega de Registros Auxiliares N° 2</td><td>Diciembre</td><td>Por Hacer</td><td>Pendiente a realizar</td></tr>
+                 <tr><td>A055</td><td>Ensayo y Ceremonia de graduación N° 2</td><td>Diciembre</td><td>Por Hacer</td><td>Pendiente a realizar</td></tr>
+                 <tr><td>A056</td><td>Informe de Evaluación Docente</td><td>Diciembre</td><td>Por Hacer</td><td>Pendiente a realizar</td></tr>
+                 <tr><td>A057</td><td>Video de recuento anual</td><td>Diciembre</td><td>Por Hacer</td><td>Pendiente a realizar</td></tr>
+                 <tr><td>A058</td><td>Reencuentro de Egresados</td><td>Diciembre</td><td>Por Hacer</td><td>Pendiente a realizar</td></tr>
+
+
+                <!-- Agrega más filas de ejemplo según sea necesario -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        function filtrarDatos() {
+            const codigo = document.getElementById('codigo').value.trim().toUpperCase();
+            const mes = document.getElementById('mes').value;
+            const estado = document.getElementById('estado').value;
+            const tabla = document.getElementById('tablaDatos').getElementsByTagName('tbody')[0];
+            const filas = tabla.getElementsByTagName('tr');
+
+            for (let i = 0; i < filas.length; i++) {
+                const fila = filas[i];
+                const celdaCodigo = fila.cells[0].textContent;
+                const celdaMes = fila.cells[2].textContent;
+                const celdaEstado = fila.cells[3].textContent;
+
+                if ((codigo === '' || celdaCodigo.startsWith(codigo)) &&
+                    (mes === '' || celdaMes === mes) &&
+                    (estado === '' || celdaEstado === estado)) {
+                    fila.style.display = '';
+                } else {
+                    fila.style.display = 'none';
+                }
+            }
+        }
+    
+    </script>
+</body>
+</html>

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filtro de Actividades</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #C96477;
+            margin-bottom: 30px;
+        }
+        .filter-section {
+            background-color: #ffffff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        .filter-section label {
+            font-weight: bold;
+            color: #333;
+        }
+        .filter-section input, .filter-section select {
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            outline: none;
+            width: 150px;
+            font-size: 14px;
+        }
+        .filter-section button {
+            background-color: #C96477;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+        .filter-section button:hover {
+            background-color: #b35763;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+            font-size: 14px;
+        }
+        th {
+            background-color: #C96477;
+            color: #fff;
+            text-transform: uppercase;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        .table-container {
+            overflow-x: auto;
+        }
+        .home-button {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #C96477;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    padding: 10px 15px;
+    font-size: 1.5em;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.home-button:hover {
+    background-color: #C96477;
+    transform: scale(1.1);
+}
+
+.home-button i {
+    margin: 0;
+}
+    </style>
+</head>
+
+<body>
+    <!-- Título -->
+    <h1>Monitoreo de Actividades Institucionales 2025</h1>
+    <div class="container">
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+<!-- Botón de Home -->
+<a href="index.html" class="home-button px-6 py-3 bg-blue-600 text-white rounded-full font-bold shadow-lg hover:bg-blue-500 transition inline-flex items-center justify-center">
+    <i class="fas fa-home text-2xl"></i>
+</a>
+
+
+    <div class="filter-section">
+        <label for="codigo">Código:</label>
+        <input type="text" id="codigo" placeholder="Ejemplo: I001">
+        
+        <label for="mes">Mes:</label>
+        <select id="mes">
+            <option value="">Seleccionar mes</option>
+            <option value="Enero">Enero</option>
+            <option value="Febrero">Febrero</option>
+            <option value="Marzo">Marzo</option>
+            <option value="Abril">Abril</option>
+            <option value="Mayo">Mayo</option>
+            <option value="Junio">Junio</option>
+            <option value="Julio">Julio</option>
+            <option value="Agosto">Agosto</option>
+            <option value="Septiembre">Septiembre</option>
+            <option value="Octubre">Octubre</option>
+            <option value="Noviembre">Noviembre</option>
+            <option value="Diciembre">Diciembre</option>
+        </select>
+        <label for="estado">Estado:</label>
+        <select id="estado">
+            <option value="">Seleccionar estado</option>
+            <option value="Por Hacer">Por Hacer</option>
+            <option value="Proceso">Proceso</option>
+            <option value="Revisión">Revisión</option>
+            <option value="Listo">Listo</option>
+        </select>
+
+
+        <button onclick="filtrarDatos()">Filtrar</button>
+
+
+
+    </div>
+ 
+    <div class="table-container">
+        <table id="tablaDatos">
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Actividad</th>
+                    <th>Mes</th>
+                    <th>Estado</th>
+                    <th>Observación</th>
+                </tr>
+            </thead>
+            <tbody>
+
+<!-- Enero -->
+<tr><td>I001</td><td>Elaborar Planes</td><td>Enero</td><td>Por Hacer</td><td>Validar el drive de procesos</td></tr>
+<tr><td>I002</td><td>Preparar los informes mensuales</td><td>Enero</td><td>Por Hacer</td><td>Informes por cada jefatura.</td></tr>
+
+<!-- Febrero -->
+<tr><td>I003</td><td>Solicitud de Metas admisión N° 1</td><td>Febrero</td><td>Listo</td><td>Expediente a la Drelm</td></tr>
+<tr><td>I004</td><td>Oficio para el admisión (protocolo, reglamento y equipo tecnico de admisión)</td><td>Febrero</td><td>Listo</td><td>en el drive de procesos</td></tr>
+<tr><td>I005</td><td>Oficio par la Muni de Lima (solicitando apoyo para el admisión)</td><td>Febrero</td><td>Listo</td><td>en el drive de procesos</td></tr>
+                
+<!-- Marzo -->
+<tr><td>I006</td><td>Documentos Drelm - 1</td><td>Marzo</td><td>Por Hacer</td><td>en el drive de procesos</td></tr>
+<tr><td>I007</td><td>Informe de Admisión - 1</td><td>Marzo</td><td>Por Hacer</td><td>en el drive de procesos</td></tr>
+<tr><td>I008</td><td>subir documentos firmados in situ (admision) </td><td>Marzo</td><td>Por Hacer</td><td>en el drive de procesos</td></tr>                
+
+<!-- Abril -->
+<tr><td>I009</td><td>Revisión de procesos</td><td>Abril</td><td>Por Hacer</td><td>Revisar el drive de procesos Institucional</td></tr>
+
+<!-- Julio -->
+<tr><td>I010</td><td>Solicitud de Metas admisión N° 2</td><td>Julio</td><td>Por Hacer</td><td>Expediente a la Drelm</td></tr>
+<tr><td>I011</td><td>Oficio para el admisión (protocolo, reglamento y equipo tecnico de admisión)- N° 2</td><td>Julio</td><td>Por Hacer</td><td>en el drive de procesos</td></tr>
+<tr><td>I012</td><td>Oficio par la Muni de Lima (solicitando apoyo para el admisión) - N°2</td><td>Julio</td><td>Por hacer</td><td>en el drive de procesos</td></tr>
+
+<!-- Agosto -->
+<tr><td>I013</td><td>Documentos Drelm - 2</td><td>Marzo</td><td>Por Hacer</td><td>en el drive de procesos</td></tr>
+<tr><td>I014</td><td>Informe de Admisión - 2</td><td>Marzo</td><td>Por Hacer</td><td>en el drive de procesos</td></tr>
+<tr><td>I015</td><td>subir documentos firmados in situ (admision) - 2 </td><td>Febrero</td><td>Por Hacer</td><td>en el drive de procesos</td></tr> 
+
+<!-- Setiembre -->
+<tr><td>I016</td><td>Revisión de procesos</td><td>Setiembre</td><td>Por Hacer</td><td>Organizar el drive de procesos</td></tr>
+
+<!-- Noviembre -->
+<tr><td>I017</td><td>Revisión general de procesos</td><td>Noviembre</td><td>Por Hacer</td><td>Revisar procesos DIFOID-DRELM</td></tr>
+
+<!-- Diciembre -->
+<tr><td>I018</td><td>Reunión General sobre los documentos</td><td>Diciembre</td><td>Por Hacer</td><td>Feedback sobre los documentos</td></tr>
+
+                <!-- Agrega más filas de ejemplo según sea necesario -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        function filtrarDatos() {
+            const codigo = document.getElementById('codigo').value.trim().toUpperCase();
+            const mes = document.getElementById('mes').value;
+            const estado = document.getElementById('estado').value;
+            const tabla = document.getElementById('tablaDatos').getElementsByTagName('tbody')[0];
+            const filas = tabla.getElementsByTagName('tr');
+
+            for (let i = 0; i < filas.length; i++) {
+                const fila = filas[i];
+                const celdaCodigo = fila.cells[0].textContent;
+                const celdaMes = fila.cells[2].textContent;
+                const celdaEstado = fila.cells[3].textContent;
+
+                if ((codigo === '' || celdaCodigo.startsWith(codigo)) &&
+                    (mes === '' || celdaMes === mes) &&
+                    (estado === '' || celdaEstado === estado)) {
+                    fila.style.display = '';
+                } else {
+                    fila.style.display = 'none';
+                }
+            }
+        }
+    
+    </script>
+</body>
+</html>
