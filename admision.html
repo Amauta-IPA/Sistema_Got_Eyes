@@ -118,10 +118,46 @@
         align-content: flex-start; /* Alinear los botones hacia la izquierda */
         gap: 10px; /* Espaciado entre botones */
     }
+
+
+ .home-button {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #FFC107;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    padding: 10px 15px;
+    font-size: 1.5em;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.home-button:hover {
+    background-color: #FFC107;
+    transform: scale(1.1);
+}
+
+.home-button i {
+    margin: 0;
+}
+
+
+        
     </style>
 </head>
+    
 <body>
     <h1>Inscripciones Admisión 2025 - II</h1>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- Botón de Home -->
+<a href="index.html" class="home-button px-6 py-3 bg-blue-600 text-white rounded-full font-bold shadow-lg hover:bg-blue-500 transition inline-flex items-center justify-center">
+    <i class="fas fa-home text-2xl"></i>
+</a>
+    
     <div class="progress-container">
         <div class="progress-label">Progreso de la Meta: <span id="progress-text">50.00%</span></div>
         <div class="progress" id="progress-bar">
