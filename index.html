@@ -88,7 +88,11 @@
   </div>
 <div id="mainApp" class="hidden p-4">
     <div class="text-center py-4">
-  
+
+
+
+
+      
 <body class="bg-blue-900 text-white font-sans">
 
   <div class="container mx-auto p-8">
@@ -158,6 +162,52 @@
       window.location.href = 'worker.html';
     }, 4000); // 3 segundos
   }
+
+
+
+ function iniciarSesion() {
+    const user = document.getElementById('usuario').value;
+    const pass = document.getElementById('contrasena').value;
+    if (user === 'admin' && pass === '1234') {
+      document.getElementById('loginScreen').classList.add('hidden');
+      document.getElementById('mainApp').classList.remove('hidden');
+      cargarTabla();
+    } else {
+      alert('Credenciales incorrectas.');
+    }
+  }
+  function olvido() {
+    alert('Por favor, comuníquese con el administrador del sistema.');
+  }
+  function cargarTabla(filtrado = datos) {
+    const tbody = document.getElementById('tablaBody'); tbody.innerHTML = '';
+    filtrado.forEach((d) => {
+      const enlace = d.link ? `<a href="${d.link}" target="_blank" class="bg-blue-500 text-white px-2 py-1 rounded text-sm hover:bg-blue-600">👁️</a>` : `<span class="bg-gray-400 text-white px-2 py-1 rounded text-sm">🔓</span>`;
+      const fila = `
+        <tr class="text-center border-t">
+          <td class="p-2">${d.id}</td>
+          <td class="p-2">${d.actividad}</td>
+          <td class="p-2">${d.estado}</td>
+          <td class="p-2">${d.urgencia}</td>
+          <td class="p-2">${d.mes}</td>
+          <td class="p-2">${d.persona}</td>
+          <td class="p-2">${d.asignacion}</td>
+          <td class="p-2">${d.vencimiento}</td>
+          <td class="p-2">${d.observacion}</td>
+          <td class="p-2">${enlace}</td>
+        </tr>
+      `;
+      tbody.innerHTML += fila;
+    });
+  }
+  
+
+
+
+
+
+
+  
 </script>
 
       <!----------------------------------------------------------------------------------------------->
@@ -270,6 +320,10 @@
 
       </div>
     </div>
+
+
+
+
     
   </body>
    
