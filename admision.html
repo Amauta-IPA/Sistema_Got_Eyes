@@ -1,389 +1,300 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Filtro de Actividades</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f8f9fa;
-            margin: 0;
-            padding: 20px;
-        }
-        h1 {
-            text-align: center;
-            color: #FFC107;
-            margin-bottom: 30px;
-        }
-        .progress-container {
-            margin-bottom: 20px;
-        }
-        .progress-bar {
-            height: 20px;
-            background-color: #FFC107;
-            border-radius: 4px;
-            width: 0%;
-            transition: width 0.3s;
-        }
-        .progress {
-            background-color: #ddd;
-            border-radius: 4px;
-            overflow: hidden;
-            width: 100%;
-        }
-        .progress-label {
-            text-align: center;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-            background-color: #ffffff;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 12px;
-            text-align: center;
-            font-size: 14px;
-        }
-        th {
-            background-color: #FFC107;
-            color: #fff;
-            text-transform: uppercase;
-        }
-        tr:nth-child(even) {
-            background-color: #fef7e0;
-        }
-        tr:hover {
-            background-color: #fff3cd;
-        }
-        .table-container {
-            overflow-x: auto;
-        }
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.4);
-        }
-        .modal-content {
-            background-color: #fff;
-            margin: 10% auto;
-            padding: 20px;
-            border-radius: 8px;
-            width: 60%;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-        }
-        .close:hover,
-        .close:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-        }
-        .summary-buttons {
-            text-align: center;
-            margin-top: 20px;
-            
-        }
-        .summary-button {
-            margin: 5px;
-            background-color: #FFC107;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            border-radius: 4px;
-            float: left;
-        margin-right: 10px;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Inscripciones Admisión 2025 - II</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    body{font-family:Arial, sans-serif;background:#f8f9fa;margin:0;padding:20px}
+    h1{text-align:center;color:#FFC107;margin-bottom:30px}
+    .progress-container{margin-bottom:20px}
+    .progress-bar{height:20px;background:#FFC107;border-radius:4px;width:0%;transition:width .3s}
+    .progress{background:#ddd;border-radius:4px;overflow:hidden;width:100%}
+    .progress-label{text-align:center;font-weight:bold;margin-bottom:5px}
+    .table-container{overflow-x:auto}
+    table{width:100%;border-collapse:collapse;margin-top:20px;background:#fff;border-radius:8px;box-shadow:0 4px 8px rgba(0,0,0,.1)}
+    th,td{border:1px solid #ddd;padding:12px;text-align:center;font-size:14px}
+    th{background:#FFC107;color:#fff;text-transform:uppercase}
+    tr:nth-child(even){background:#fef7e0}
+    tr:hover{background:#fff3cd}
+    .summary-buttons{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+    .summary-button{background:#FFC107;color:#fff;border:none;padding:10px 16px;font-size:16px;cursor:pointer;border-radius:6px}
+    .home-button{position:fixed;top:20px;right:20px;background:#FFC107;color:#fff;border:none;border-radius:50%;padding:10px 15px;font-size:1.5em;cursor:pointer;box-shadow:0 4px 6px rgba(0,0,0,.1);transition:background .3s,transform .3s;display:inline-flex;align-items:center;justify-content:center}
+    .home-button:hover{transform:scale(1.06)}
+    /* Modales */
+    .modal{display:none;position:fixed;z-index:999;inset:0;background:rgba(0,0,0,.4);padding:20px}
+    .modal[aria-hidden="false"]{display:block}
+    .modal-content{background:#fff;margin:40px auto;max-width:900px;border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,.2);overflow:hidden}
+    .modal-header{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;border-bottom:1px solid #eee}
+    .modal-header h2{margin:0;font-size:20px}
+    .close{background:transparent;border:none;font-size:26px;cursor:pointer;color:#666}
+    .modal-body{padding:20px}
+  </style>
+</head>
+<body>
+  <h1>Inscripciones Admisión 2026 - I</h1>
 
-        }
-        .button-container {
-         display: flex;
-        align-content: flex-start; /* Alinear los botones hacia la izquierda */
-        gap: 10px; /* Espaciado entre botones */
+  <!-- Botón Home -->
+  <a href="index.html" class="home-button" aria-label="Ir a inicio">
+    <i class="fas fa-home"></i>
+  </a>
+
+  <!-- Progreso -->
+  <div class="progress-container">
+    <div class="progress-label">Progreso de la Meta: <span id="progress-text">0%</span></div>
+    <div class="progress" id="progress-bar">
+      <div class="progress-bar" id="progress-fill"></div>
+    </div>
+  </div>
+
+  <!-- Tabla principal -->
+  <div class="table-container">
+    <table id="tabla-principal" aria-label="Inscripciones por carrera y turno">
+      <thead>
+        <tr>
+          <th>CARRERAS</th>
+          <th>MAÑANA</th>
+          <th>NOCHE</th>
+          <th>SÁBADO</th>
+          <th>TOTAL</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Inicial</td>
+          <td>1</td>
+          <td>2</td>
+          <td>0</td>
+          <td data-total="row">0</td>
+        </tr>
+        <tr>
+          <td>Primaria</td>
+          <td>0</td>
+          <td>2</td>
+          <td>1</td>
+          <td data-total="row">0</td>
+        </tr>
+        <tr>
+          <td>CCSS</td>
+          <td>2</td>
+          <td>2</td>
+          <td>0</td>
+          <td data-total="row">0</td>
+        </tr>
+        <tr>
+          <td><strong>Total</strong></td>
+          <td><strong data-total-col="manana">0</strong></td>
+          <td><strong data-total-col="noche">0</strong></td>
+          <td><strong data-total-col="sabado">0</strong></td>
+          <td><strong data-total-global="true">0</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Botones de resumen -->
+  <div class="summary-buttons" aria-label="Resúmenes históricos">
+    <button class="summary-button" data-target="#summaryModal-2026-I">Resumen 2026 - I</button>
+    <button class="summary-button" data-target="#summaryModal-2025-II">Resumen 2025 - II</button>
+    <button class="summary-button" data-target="#summaryModal-2025-I">Resumen 2025 - I</button>
+  </div>
+
+  <!-- Modal 2026-I -->
+  <div class="modal" id="summaryModal-2026-I" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="title-2026-I">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="title-2026-I">Resumen 2026 - I</h2>
+        <button class="close" data-close aria-label="Cerrar">&times;</button>
+      </div>
+      <div class="modal-body">
+        <table>
+          <thead>
+            <tr>
+              <th>CARRERAS</th>
+              <th>MAÑANA</th>
+              <th>NOCHE</th>
+              <th>SÁBADO</th>
+              <th>POSTULANTES</th>
+              <th>INGRESANTES</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Inicial</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+            <tr><td>Primaria</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+            <tr><td>CCSS</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+            <tr>
+              <td><strong>Total</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+              <td><strong>0</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 2025-II -->
+  <div class="modal" id="summaryModal-2025-II" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="title-2025-II">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="title-2025-II">Resumen 2025 - II</h2>
+        <button class="close" data-close aria-label="Cerrar">&times;</button>
+      </div>
+      <div class="modal-body">
+        <table>
+          <thead>
+            <tr>
+              <th>CARRERAS</th>
+              <th>MAÑANA</th>
+              <th>NOCHE</th>
+              <th>SÁBADO</th>
+              <th>POSTULANTES</th>
+              <th>INGRESANTES</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Inicial</td><td>12</td><td>55</td><td>16</td><td>83</td><td>68</td></tr>
+            <tr><td>Primaria</td><td>4</td><td>28</td><td>18</td><td>50</td><td>41</td></tr>
+            <tr><td>CCSS</td><td>1</td><td>22</td><td>6</td><td>29</td><td>22</td></tr>
+            <tr>
+              <td><strong>Total</strong></td>
+              <td><strong>17</strong></td>
+              <td><strong>105</strong></td>
+              <td><strong>40</strong></td>
+              <td><strong>162</strong></td>
+              <td><strong>131</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 2025-I -->
+  <div class="modal" id="summaryModal-2025-I" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="title-2025-I">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="title-2025-I">Resumen 2025 - I</h2>
+        <button class="close" data-close aria-label="Cerrar">&times;</button>
+      </div>
+      <div class="modal-body">
+        <table>
+          <thead>
+            <tr>
+              <th>CARRERAS</th>
+              <th>MAÑANA</th>
+              <th>NOCHE</th>
+              <th>SÁBADO</th>
+              <th>POSTULANTES</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Inicial</td><td>35</td><td>79</td><td>25</td><td>139</td></tr>
+            <tr><td>Primaria</td><td>8</td><td>39</td><td>15</td><td>62</td></tr>
+            <tr><td>CCSS</td><td>4</td><td>31</td><td>10</td><td>45</td></tr>
+            <tr>
+              <td><strong>Total</strong></td>
+              <td><strong>47</strong></td>
+              <td><strong>149</strong></td>
+              <td><strong>50</strong></td>
+              <td><strong>246</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    /* =======================
+       Configuración progreso
+       ======================= */
+    // Simulación: porcentaje recibido desde backend
+    const porcentajeMeta = 5.00; // <-- Actualiza desde backend
+    const progressBar = document.getElementById('progress-fill');
+    const progressText = document.getElementById('progress-text');
+    progressBar.style.width = porcentajeMeta + '%';
+    progressText.textContent = porcentajeMeta.toFixed(2) + '%';
+
+    /* =========================================
+       Cálculo automático de totales (tabla base)
+       ========================================= */
+    (function calcularTotalesTablaPrincipal(){
+      const tabla = document.getElementById('tabla-principal');
+      const filas = Array.from(tabla.tBodies[0].rows);
+      const filasDatos = filas.slice(0, filas.length - 1); // sin la fila de totales
+      let sumManana = 0, sumNoche = 0, sumSabado = 0, sumGlobal = 0;
+
+      filasDatos.forEach(tr => {
+        const manana = parseInt(tr.cells[1].textContent.trim(), 10) || 0;
+        const noche  = parseInt(tr.cells[2].textContent.trim(), 10) || 0;
+        const sabado = parseInt(tr.cells[3].textContent.trim(), 10) || 0;
+        const totalFila = manana + noche + sabado;
+
+        tr.querySelector('[data-total="row"]').textContent = totalFila;
+
+        sumManana += manana;
+        sumNoche  += noche;
+        sumSabado += sabado;
+        sumGlobal += totalFila;
+      });
+
+      tabla.querySelector('[data-total-col="manana"]').textContent = sumManana;
+      tabla.querySelector('[data-total-col="noche"]').textContent  = sumNoche;
+      tabla.querySelector('[data-total-col="sabado"]').textContent = sumSabado;
+      tabla.querySelector('[data-total-global="true"]').textContent = sumGlobal;
+    })();
+
+    /* =========================
+       Lógica genérica de modales
+       ========================= */
+    const buttons = document.querySelectorAll('.summary-button');
+    const modales = document.querySelectorAll('.modal');
+
+    function abrirModal(selector){
+      const modal = document.querySelector(selector);
+      if(!modal) return;
+      modal.setAttribute('aria-hidden','false');
+      // Enfoque accesible
+      const closeBtn = modal.querySelector('[data-close]');
+      if (closeBtn) closeBtn.focus();
     }
 
+    function cerrarModal(modal){
+      modal.setAttribute('aria-hidden','true');
+    }
 
- .home-button {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background-color: #FFC107;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    padding: 10px 15px;
-    font-size: 1.5em;
-    cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s, transform 0.3s;
-}
+    // Abrir con botones
+    buttons.forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        const target = btn.getAttribute('data-target');
+        abrirModal(target);
+      });
+    });
 
-.home-button:hover {
-    background-color: #FFC107;
-    transform: scale(1.1);
-}
+    // Cerrar con botón X
+    modales.forEach(m=>{
+      m.addEventListener('click', (e)=>{
+        if (e.target.matches('[data-close]')) cerrarModal(m);
+      });
+      // Cerrar clic fuera del contenido
+      m.addEventListener('click', (e)=>{
+        const content = m.querySelector('.modal-content');
+        if (!content.contains(e.target)) cerrarModal(m);
+      });
+    });
 
-.home-button i {
-    margin: 0;
-}
-
-
-        
-    </style>
-</head>
-    
-<body>
-    <h1>Inscripciones Admisión 2025 - II</h1>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
-    <!-- Botón de Home -->
-<a href="index.html" class="home-button px-6 py-3 bg-blue-600 text-white rounded-full font-bold shadow-lg hover:bg-blue-500 transition inline-flex items-center justify-center">
-    <i class="fas fa-home text-2xl"></i>
-</a>
-    
-    <div class="progress-container">
-        <div class="progress-label">Progreso de la Meta: <span id="progress-text">50.00%</span></div>
-        <div class="progress" id="progress-bar">
-            <div class="progress-bar" id="progress-fill"></div>
-        </div>
-    </div>
-    <div class="table-container">
-        <table>
-            <thead>
-                <tr>
-                    <th>CARRERAS</th>
-                    <th>MAÑANA</th>
-                    <th>NOCHE</th>
-                    <th>SÁBADO</th>
-                    <th>TOTAL</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Inicial</td>
-                    <td>0</td>  <!-- INICIAL MAÑANA  -->
-                    <td>7</td>   <!-- INICIAL NOCHE -->
-                    <td>2</td>   <!-- INICIAL SABADO -->
-                    <td>9</td>    <!-- TOTAL INICIAL -->
-                </tr>
-                <tr>
-                    <td>Primaria</td>
-                    <td>0</td>  <!-- PRIMARIA MAÑANA  -->
-                    <td>1</td>   <!-- PRIMARIA NOCHE  -->
-                    <td>3</td>   <!-- PRIMARIA SABADO  -->
-                    <td>4</td>    <!-- TOTAL PRIMARIA  -->
-                </tr> 
-                <tr>
-                    <td>CCSS</td>
-                    <td>0</td>   <!-- CCSS MAÑANA  -->
-                    <td>6</td>  <!-- CCSS NOCHE  -->
-                    <td>0</td>   <!-- CCSS SABADO  -->
-                    <td>6</td>   <!-- TOTAL CCSS  -->
-                </tr>
-                <tr>
-                    <td><strong>Total</strong></td>
-                    <td><strong>0</strong></td>    <!-- TOTAL MAÑANA  -->
-                    <td><strong>1</strong></td>    <!-- TOTAL NOCHE  -->
-                    <td><strong>2</strong></td>     <!-- TOTAL SABADO -->
-                    <td><strong>19</strong></td>    <!-- TOTAL INSCRITOS  -->
-                </tr>
-            </tbody>
-        </table>
-    </div>
-    <div class="summary-buttons">
-        <button class="summary-button" onclick="openModal()">Resumen 2025 - I</button>
-    </div>
-    <div id="summaryModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <h2>Resumen 2025 - I</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>CARRERAS</th>
-                        <th>MAÑANA</th>
-                        <th>NOCHE</th>
-                        <th>SÁBADO</th>
-                        <th>POSTULANTES</th>
-                        <th>INGRESANTES</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Inicial</td>
-                        <td>35</td>  <!-- INICIAL MAÑANA  -->
-                        <td>79</td>   <!-- INICIAL NOCHE -->
-                        <td>25</td>   <!-- INICIAL SABADO -->
-                        <td>139</td>    <!-- TOTAL INICIAL -->
-                        <td>114</td>    <!-- INGRESANTES INICIAL -->
-                    </tr>
-                    <tr>
-                        <td>Primaria</td>
-                        <td>8</td>  <!-- PRIMARIA MAÑANA  -->
-                        <td>39</td>   <!-- PRIMARIA NOCHE  -->
-                        <td>15</td>   <!-- PRIMARIA SABADO  -->
-                        <td>62</td>    <!-- TOTAL PRIMARIA  -->
-                        <td>52</td>    <!-- INGRESANTES PRIMARIA -->
-                    </tr> 
-                    <tr>
-                        <td>CCSS</td>
-                        <td>4</td>   <!-- CCSS MAÑANA  -->
-                        <td>31</td>  <!-- CCSS NOCHE  -->
-                        <td>10</td>   <!-- CCSS SABADO  -->
-                        <td>45</td>   <!-- TOTAL CCSS  -->
-                        <td>30</td>    <!-- INGRESANTES CCSS -->
-                    </tr>
-                    <tr>
-                        <td><strong>Total</strong></td>
-                        <td><strong>47</strong></td>    <!-- TOTAL MAÑANA  -->
-                        <td><strong>149</strong></td>    <!-- TOTAL NOCHE  -->
-                        <td><strong>50</strong></td>     <!-- TOTAL SABADO -->
-                        <td><strong>246</strong></td>    <!-- TOTAL INSCRITOS  -->
-                        <td><strong>196</strong></td>    <!-- TOTAL INGRESANTES  -->
-
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-
-
-    <div class="summary-buttons">
-        <button class="summary-button" onclick="openModal()">Resumen 2025 - I</button>
-    </div>
-    <div id="summaryModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <h2>Resumen 2025 - I</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>CARRERAS</th>
-                        <th>MAÑANA</th>
-                        <th>NOCHE</th>
-                        <th>SÁBADO</th>
-                        <th>POSTULANTES</th>
-                        <th>INGRESANTES</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Inicial</td>
-                        <td>35</td>  <!-- INICIAL MAÑANA  -->
-                        <td>79</td>   <!-- INICIAL NOCHE -->
-                        <td>25</td>   <!-- INICIAL SABADO -->
-                        <td>139</td>    <!-- TOTAL INICIAL -->
-                    </tr>
-                    <tr>
-                        <td>Primaria</td>
-                        <td>8</td>  <!-- PRIMARIA MAÑANA  -->
-                        <td>39</td>   <!-- PRIMARIA NOCHE  -->
-                        <td>15</td>   <!-- PRIMARIA SABADO  -->
-                        <td>62</td>    <!-- TOTAL PRIMARIA  -->
-                    </tr> 
-                    <tr>
-                        <td>CCSS</td>
-                        <td>4</td>   <!-- CCSS MAÑANA  -->
-                        <td>31</td>  <!-- CCSS NOCHE  -->
-                        <td>10</td>   <!-- CCSS SABADO  -->
-                        <td>45</td>   <!-- TOTAL CCSS  -->
-                    </tr>
-                    <tr>
-                        <td><strong>Total</strong></td>
-                        <td><strong>47</strong></td>    <!-- TOTAL MAÑANA  -->
-                        <td><strong>149</strong></td>    <!-- TOTAL NOCHE  -->
-                        <td><strong>50</strong></td>     <!-- TOTAL SABADO -->
-                        <td><strong>246</strong></td>    <!-- TOTAL INSCRITOS  -->
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
- <div id="summaryModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <h2>Resumen 2025 - II</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>CARRERAS</th>
-                        <th>MAÑANA</th>
-                        <th>NOCHE</th>
-                        <th>SÁBADO</th>
-                        <th>POSTULANTES</th>
-                        <th>INGRESANTES</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Inicial</td>
-                        <td>0</td>  <!-- INICIAL MAÑANA  -->
-                        <td>0</td>   <!-- INICIAL NOCHE -->
-                        <td>0</td>   <!-- INICIAL SABADO -->
-                        <td>0</td>    <!-- TOTAL INICIAL -->
-                    </tr>
-                    <tr>
-                        <td>Primaria</td>
-                        <td>0</td>  <!-- PRIMARIA MAÑANA  -->
-                        <td>0</td>   <!-- PRIMARIA NOCHE  -->
-                        <td>0</td>   <!-- PRIMARIA SABADO  -->
-                        <td>0</td>    <!-- TOTAL PRIMARIA  -->
-                    </tr> 
-                    <tr>
-                        <td>CCSS</td>
-                        <td>0</td>   <!-- CCSS MAÑANA  -->
-                        <td>0</td>  <!-- CCSS NOCHE  -->
-                        <td>0</td>   <!-- CCSS SABADO  -->
-                        <td>0</td>   <!-- TOTAL CCSS  -->
-                    </tr>
-                    <tr>
-                        <td><strong>Total</strong></td>
-                        <td><strong>0</strong></td>    <!-- TOTAL MAÑANA  -->
-                        <td><strong>0</strong></td>    <!-- TOTAL NOCHE  -->
-                        <td><strong>0</strong></td>     <!-- TOTAL SABADO -->
-                        <td><strong>0</strong></td>    <!-- TOTAL INSCRITOS  -->
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-
-    <script>
-        function openModal() {
-            document.getElementById('summaryModal').style.display = 'block';
-        }
-        function closeModal() {
-            document.getElementById('summaryModal').style.display = 'none';
-        }
-    </script>
-     <script>
-        // Simulación de porcentaje recibido desde el backend -- meta propuesta 180, el porcentaje es sacado en base a 210 como el 100%
-        const porcentajeMeta = 10.00; // Cambia este valor desde el backend
-
-        // Actualización de la barra de progreso
-        const progressBar = document.getElementById('progress-fill');
-        const progressText = document.getElementById('progress-text');
-
-        progressBar.style.width = porcentajeMeta + '%';
-        progressText.textContent = porcentajeMeta + '%';
-    </script>
+    // Cerrar con ESC
+    document.addEventListener('keydown',(e)=>{
+      if(e.key === 'Escape'){
+        document.querySelectorAll('.modal[aria-hidden="false"]').forEach(m=>cerrarModal(m));
+      }
+    });
+  </script>
 </body>
 </html>
 
